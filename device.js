@@ -81,10 +81,8 @@ deviceTypes.freebox={
                 ptType.subdevices[3].commands[i]=[];
                 for(j=i;Math.floor(j)>0;j=j/10)
                 {
-                    if(j>10)
-                        ptType.subdevices[3].commands[i].unshift('http://'+body.fbxName+'.freebox.fr/pub/remote_control?code='+body.code+'&key='+Math.floor(j%10)+'&long=false');
-                    else
-                        ptType.subdevices[3].commands[i].unshift('http://'+body.fbxName+'.freebox.fr/pub/remote_control?code='+body.code+'&key='+Math.floor(j%10)+'&long=true');
+                    var long=(j>10).toString().toLowerCase();
+                    ptType.subdevices[3].commands[i].unshift('http://'+body.fbxName+'.freebox.fr/pub/remote_control?code='+body.code+'&key='+Math.floor(j%10)+'&long='+long);
                 }
             }
         }
